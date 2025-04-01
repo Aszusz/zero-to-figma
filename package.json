@@ -1,0 +1,38 @@
+{
+  "name": "moonshine-mxhx-converter",
+  "version": "1.0.0",
+  "description": "Figma plugin to export designs as MXHX for Moonshine.dev",
+  "main": "dist/code.js",
+  "scripts": {
+    "main": "esbuild src/plugin/main.ts --bundle --outfile=dist/code.js --platform=browser --target=es6 --format=esm",
+    "ui": "vite build",
+    "build": "concurrently -n main,ui \"npm run main\" \"npm run ui\"",
+    "watch": "concurrently -n main,ui \"npm run main -- --watch\" \"npm run ui -- --watch\"",
+    "dev": "npm run watch",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [
+    "figma",
+    "plugin",
+    "mxhx",
+    "moonshine"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@figma/plugin-typings": "^1.64.0",
+    "@types/react": "^18.2.15",
+    "@types/react-dom": "^18.2.7",
+    "@vitejs/plugin-react": "^4.0.3",
+    "concurrently": "^8.2.0",
+    "esbuild": "^0.18.14",
+    "typescript": "^5.1.6",
+    "vite": "^4.4.9",
+    "vite-plugin-singlefile": "^0.13.5"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}

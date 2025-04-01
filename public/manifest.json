@@ -1,0 +1,13 @@
+{
+  "name": "Figma Plugin Template",
+  "id": "123",
+  "api": "1.0.0",
+  "main": "code.js",
+  "ui": "index.html",
+  "editorType": ["figma"],
+  "menu": [
+    {
+      "name": "Figma Plugin Template"
+    }
+  ]
+}
