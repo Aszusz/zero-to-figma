@@ -6,9 +6,10 @@ import { resolve } from "path";
 export default defineConfig({
   plugins: [react(), viteSingleFile()],
   root: "src/ui",
+  publicDir: resolve(__dirname, "public"),
   build: {
     outDir: "../../dist",
-    emptyOutDir: false, // Don't empty the directory since esbuild put code.js there
+    emptyOutDir: false,
     cssCodeSplit: false,
     assetsInlineLimit: 100000000,
     rollupOptions: {

@@ -1,13 +1,13 @@
 export type UiCommand = SampleCommand;
 
-export type PluginEvent = SampleCommand;
+export type PluginEvent = SampleEvent;
 
 export type SampleCommand = {
-  type: "sample";
+  type: "ping";
   payload: null;
 };
 
 export type SampleEvent = {
-  type: "sample";
+  type: "pong";
   payload: null;
 };

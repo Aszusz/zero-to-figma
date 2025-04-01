@@ -7,9 +7,9 @@ figma.ui.onmessage = (msg: UiCommand) => {
   let response: PluginEvent | undefined = undefined;
 
   switch (msg.type) {
-    case "sample": {
+    case "ping": {
       response = {
-        type: "sample",
+        type: "pong",
         payload: null,
       };
       break;
