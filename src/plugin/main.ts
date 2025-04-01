@@ -10,7 +10,9 @@ figma.ui.onmessage = (msg: UiCommand) => {
     case 'ping': {
       response = {
         type: 'pong',
-        payload: null,
+        payload: {
+          timestamp: Date.now()
+        },
       };
       break;
     }

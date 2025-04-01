@@ -1,6 +1,6 @@
 import { appEffects } from './effects';
 import { shell } from './shell';
-import { selectPluginState, State } from '@/UI/core/core';
+import { selectPongMessages, State } from '@/UI/core/core';
 import { storeContext, StoreContext } from '@/UI/main';
 import { useContext, useMemo } from 'react';
 import { StoreApi } from 'zustand';
@@ -15,7 +15,7 @@ export const useShell = (
   return useMemo(() => {
     return {
       // State hooks
-      usePluginState: () => useStore(store, selectPluginState),
+      usePongMessages: () => useStore(store, selectPongMessages),
 
       // Thunks
       ...shell(store, eff),

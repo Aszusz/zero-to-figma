@@ -3,6 +3,7 @@ export type Effects = {
   postMessage: <T>(message: T, targetOrigin: string) => void;
   addEventListener: (type: string, listener: EventListener) => void;
   removeEventListener: (type: string, listener: EventListener) => void;
+  getCurrentTime: () => number;
 };
 
 export const appEffects: Effects = {
@@ -22,5 +23,9 @@ export const appEffects: Effects = {
 
   removeEventListener: (type: string, listener: EventListener): void => {
     window.removeEventListener(type, listener);
+  },
+  
+  getCurrentTime: (): number => {
+    return Date.now();
   },
 };

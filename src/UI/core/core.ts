@@ -1,27 +1,30 @@
 // Types
 
-export type PluginState = 'active' | 'inactive';
+export type PongMessage = {
+  timestamp: number;
+  receivedAt: number;
+};
 
 export type State = {
-  readonly pluginState: PluginState;
+  readonly pongMessages: PongMessage[];
 };
 
 // Factories
 
 export const initialState = (): State => ({
-  pluginState: 'inactive',
+  pongMessages: [],
 });
 
 // Selectors
 
-export const selectPluginState = (state: State): PluginState =>
-  state.pluginState;
+export const selectPongMessages = (state: State): PongMessage[] =>
+  state.pongMessages;
 
 // Actions
 
-export const setPluginState =
-  (pluginState: PluginState) =>
+export const addPongMessage =
+  (pongMessage: PongMessage) =>
   (state: State): State => ({
     ...state,
-    pluginState,
+    pongMessages: [...state.pongMessages, pongMessage],
   });

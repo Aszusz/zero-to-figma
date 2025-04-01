@@ -1,5 +1,5 @@
 import { Effects } from './effects';
-import { setPluginState, State } from '@/UI/core/core';
+import { addPongMessage, State } from '@/UI/core/core';
 import { SampleCommand, PluginEvent } from '@/common/messages';
 import { StoreApi } from 'zustand/vanilla';
 
@@ -10,6 +10,12 @@ export const shell = (store: StoreApi<State>, eff: Effects) => {
     switch (event.type) {
       case 'pong':
         eff.log('Pong received');
+        store.setState(
+          addPongMessage({
+            timestamp: event.payload.timestamp,
+            receivedAt: eff.getCurrentTime(),
+          })
+        );
         break;
       default:
         eff.log('Unknown event type:', event.type);
@@ -31,7 +37,6 @@ export const shell = (store: StoreApi<State>, eff: Effects) => {
     onPluginStarted: async () => {
       eff.log('Plugin started');
       eff.addEventListener('message', onAnyMessage);
-      store.setState(setPluginState('active'));
     },
 
     onSendPingClicked: async () => {
@@ -47,7 +52,6 @@ export const shell = (store: StoreApi<State>, eff: Effects) => {
       eff.log('Plugin closing');
       eff.removeEventListener('message', onAnyMessage);
       eff.postMessage({ pluginMessage: { type: 'close-plugin' } }, '*');
-      store.setState(setPluginState('inactive'));
     },
   };
 };

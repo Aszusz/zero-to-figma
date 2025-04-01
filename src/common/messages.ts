@@ -9,5 +9,7 @@ export type SampleCommand = {
 
 export type SampleEvent = {
   type: 'pong';
-  payload: null;
+  payload: {
+    timestamp: number;
+  };
 };
