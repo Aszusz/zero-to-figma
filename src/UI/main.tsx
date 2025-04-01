@@ -1,4 +1,4 @@
-import { State, initialState } from './core/counter';
+import { State, initialState } from './core/core';
 import './index.css';
 import App from './view/App';
 import { StrictMode } from 'react';

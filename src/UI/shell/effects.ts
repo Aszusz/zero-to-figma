@@ -1,7 +1,8 @@
 export type Effects = {
   log: (message: string, ...args: unknown[]) => void;
-  random: (min: number, max: number) => number;
-  delay: (ms: number) => Promise<void>;
+  postMessage: <T>(message: T, targetOrigin: string) => void;
+  addEventListener: (type: string, listener: EventListener) => void;
+  removeEventListener: (type: string, listener: EventListener) => void;
 };
 
 export const appEffects: Effects = {
@@ -9,11 +10,17 @@ export const appEffects: Effects = {
     console.log(message, ...args);
   },
 
-  random: (min: number, max: number): number => {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
+  postMessage: <T>(message: T, targetOrigin: string): void => {
+    if (window.parent) {
+      window.parent.postMessage(message, targetOrigin);
+    }
   },
 
-  delay: async (ms: number): Promise<void> => {
-    return new Promise((resolve) => setTimeout(resolve, ms));
+  addEventListener: (type: string, listener: EventListener): void => {
+    window.addEventListener(type, listener);
+  },
+
+  removeEventListener: (type: string, listener: EventListener): void => {
+    window.removeEventListener(type, listener);
   },
 };

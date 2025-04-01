@@ -1,37 +1,33 @@
-import { useCounter } from '@/UI/shell/useCounter';
+import { useShell } from '@/UI/shell/useShell';
+import { useEffect } from 'react';
 
 function App() {
-  const { useCount, onIncrement, onDecrement, onIncrementAsync } = useCounter();
-  const count = useCount();
+  const { usePluginState, onPluginStarted, onPluginClosed, onSendPingClicked } =
+    useShell();
+
+  const pluginState = usePluginState();
+
+  useEffect(() => {
+    // Notify the shell that the plugin has started
+    onPluginStarted();
+    // Cleanup function to notify the shell that the plugin has closed
+    return () => {
+      onPluginClosed();
+    };
+  }, [onPluginStarted, onPluginClosed]);
 
   return (
     <div className="m-10 mx-auto flex max-w-xs flex-col items-center justify-center space-y-4 rounded-lg bg-gray-100 p-4 shadow-lg">
-      <h1 className="text-2xl font-semibold">Counter: {count}</h1>
+      <h1 className="text-2xl font-semibold">Plugin State: {pluginState}</h1>
 
       {/* Button grid container */}
       <div className="grid w-full grid-cols-2 gap-4">
         {/* Increment button */}
         <button
-          className="rounded-lg bg-blue-500 px-4 py-2 font-semibold text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
-          onClick={onIncrement}
+          className="rounded-lg bg-blue-500 px-4 py-2 font-semibold text-white hover:bg-blue-600 focus:ring-2 focus:ring-blue-400 focus:outline-none"
+          onClick={onSendPingClicked}
         >
-          Increment
-        </button>
-
-        {/* Decrement button */}
-        <button
-          className="rounded-lg bg-red-500 px-4 py-2 font-semibold text-white hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-400"
-          onClick={onDecrement}
-        >
-          Decrement
-        </button>
-
-        {/* Increment Async button, spanning two columns */}
-        <button
-          className="col-span-2 rounded-lg bg-green-500 px-4 py-2 font-semibold text-white hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-400"
-          onClick={onIncrementAsync}
-        >
-          Increment Async
+          Send Ping
         </button>
       </div>
     </div>

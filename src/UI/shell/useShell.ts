@@ -1,12 +1,12 @@
-import { counter } from './counter';
 import { appEffects } from './effects';
-import { selectCount, State } from '@/UI/core/counter';
+import { shell } from './shell';
+import { selectPluginState, State } from '@/UI/core/core';
 import { storeContext, StoreContext } from '@/UI/main';
 import { useContext, useMemo } from 'react';
 import { StoreApi } from 'zustand';
 import { useStore } from 'zustand/react';
 
-export const useCounter = (
+export const useShell = (
   ctx: StoreContext = storeContext,
   eff = appEffects,
 ) => {
@@ -15,10 +15,10 @@ export const useCounter = (
   return useMemo(() => {
     return {
       // State hooks
-      useCount: () => useStore(store, selectCount),
+      usePluginState: () => useStore(store, selectPluginState),
 
       // Thunks
-      ...counter(store, eff),
+      ...shell(store, eff),
     };
   }, [store, eff]);
 };
