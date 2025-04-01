@@ -1,4 +1,4 @@
-import { PluginEvent, UiCommand } from "../common/messages";
+import { PluginEvent, UiCommand } from '../common/messages';
 
 // Show the plugin UI
 figma.showUI(__html__, { width: 450, height: 650 });
@@ -7,9 +7,9 @@ figma.ui.onmessage = (msg: UiCommand) => {
   let response: PluginEvent | undefined = undefined;
 
   switch (msg.type) {
-    case "ping": {
+    case 'ping': {
       response = {
-        type: "pong",
+        type: 'pong',
         payload: null,
       };
       break;

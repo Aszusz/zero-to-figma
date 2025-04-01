@@ -3,11 +3,11 @@ export type UiCommand = SampleCommand;
 export type PluginEvent = SampleEvent;
 
 export type SampleCommand = {
-  type: "ping";
+  type: 'ping';
   payload: null;
 };
 
 export type SampleEvent = {
-  type: "pong";
+  type: 'pong';
   payload: null;
 };

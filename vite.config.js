@@ -1,29 +1,32 @@
-import { defineConfig } from "vite";
-import { viteSingleFile } from "vite-plugin-singlefile";
-import react from "@vitejs/plugin-react";
-import { resolve } from "path";
+import react from '@vitejs/plugin-react';
+import { resolve } from 'path';
+import { defineConfig } from 'vite';
+import { viteSingleFile } from 'vite-plugin-singlefile';
 
 export default defineConfig({
   plugins: [react(), viteSingleFile()],
-  root: "src/ui",
-  publicDir: resolve(__dirname, "public"),
+  root: 'src/ui',
+  publicDir: resolve(__dirname, 'public'),
   build: {
-    outDir: "../../dist",
+    outDir: '../../dist',
     emptyOutDir: false,
     cssCodeSplit: false,
     assetsInlineLimit: 100000000,
     rollupOptions: {
       input: {
-        ui: resolve(__dirname, "src/ui/index.html"),
+        ui: resolve(__dirname, 'src/ui/index.html'),
       },
       output: {
-        entryFileNames: "ui.js",
-        chunkFileNames: "[name].js",
-        assetFileNames: "[name].[ext]",
+        entryFileNames: 'ui.js',
+        chunkFileNames: '[name].js',
+        assetFileNames: '[name].[ext]',
       },
     },
   },
   resolve: {
-    extensions: [".tsx", ".ts", ".jsx", ".js"],
+    extensions: ['.tsx', '.ts', '.jsx', '.js'],
+    alias: {
+      '@': resolve(__dirname, './src'),
+    },
   },
 });
