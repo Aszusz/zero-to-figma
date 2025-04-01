@@ -1,6 +1,6 @@
-import App from './App';
 import { State, initialState } from './core/counter';
-import React from 'react';
+import './index.css';
+import App from './view/App';
 import { StrictMode } from 'react';
 import { createContext } from 'react';
 import { createRoot } from 'react-dom/client';
