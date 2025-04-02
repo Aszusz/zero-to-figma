@@ -1,7 +1,7 @@
 {
-  "name": "moonshine-mxhx-converter",
+  "name": "figma-plugin-template",
   "version": "1.0.0",
-  "description": "Figma plugin to export designs as MXHX for Moonshine.dev",
+  "description": "Figma Plugin Template",
   "main": "dist/code.js",
   "type": "module",
   "scripts": {
