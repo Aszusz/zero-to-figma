@@ -1,6 +1,6 @@
 import { Effects } from './effects';
-import { addPongMessage, State } from '@/UI/core/core';
 import { SampleCommand, PluginEvent } from '@/common/messages';
+import { addPongMessage, State } from '@/ui/core/core';
 import { StoreApi } from 'zustand/vanilla';
 
 export const shell = (store: StoreApi<State>, eff: Effects) => {
@@ -14,7 +14,7 @@ export const shell = (store: StoreApi<State>, eff: Effects) => {
           addPongMessage({
             timestamp: event.payload.timestamp,
             receivedAt: eff.getCurrentTime(),
-          })
+          }),
         );
         break;
       default:

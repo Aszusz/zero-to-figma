@@ -1,9 +1,13 @@
-import { useShell } from '@/UI/shell/useShell';
+import { useShell } from '@/ui/shell/useShell';
 import { useEffect } from 'react';
 
 function App() {
-  const { usePongMessages, onPluginStarted, onPluginClosed, onSendPingClicked } =
-    useShell();
+  const {
+    usePongMessages,
+    onPluginStarted,
+    onPluginClosed,
+    onSendPingClicked,
+  } = useShell();
 
   const pongMessages = usePongMessages();
 
@@ -34,19 +38,21 @@ function App() {
       </button>
 
       {/* List of pong messages */}
-      <div className="w-full mt-4">
-        <h2 className="text-lg font-medium mb-2">Received Messages:</h2>
+      <div className="mt-4 w-full">
+        <h2 className="mb-2 text-lg font-medium">Received Messages:</h2>
         {pongMessages.length === 0 ? (
           <p className="text-gray-500 italic">No messages received yet</p>
         ) : (
-          <ul className="w-full space-y-2 max-h-80 overflow-y-auto">
+          <ul className="max-h-80 w-full space-y-2 overflow-y-auto">
             {pongMessages.map((message, index) => (
-              <li key={index} className="p-2 bg-white rounded shadow-sm">
+              <li key={index} className="rounded bg-white p-2 shadow-sm">
                 <p className="text-sm">
-                  <span className="font-medium">Sent:</span> {formatTimestamp(message.timestamp)}
+                  <span className="font-medium">Sent:</span>{' '}
+                  {formatTimestamp(message.timestamp)}
                 </p>
                 <p className="text-sm">
-                  <span className="font-medium">Received:</span> {formatTimestamp(message.receivedAt)}
+                  <span className="font-medium">Received:</span>{' '}
+                  {formatTimestamp(message.receivedAt)}
                 </p>
                 <p className="text-xs text-gray-500">
                   Latency: {message.receivedAt - message.timestamp}ms
