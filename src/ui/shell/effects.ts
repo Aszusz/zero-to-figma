@@ -24,7 +24,7 @@ export const appEffects: Effects = {
   removeEventListener: (type: string, listener: EventListener): void => {
     window.removeEventListener(type, listener);
   },
-  
+
   getCurrentTime: (): number => {
     return Date.now();
   },

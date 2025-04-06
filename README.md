@@ -47,12 +47,14 @@ zero-to-figma/
 ### Installation
 
 1. Clone this repository:
+
    ```bash
    git clone https://github.com/yourusername/zero-to-figma.git
    cd zero-to-figma
    ```
 
 2. Install dependencies:
+
    ```bash
    npm install
    ```
@@ -65,6 +67,7 @@ zero-to-figma/
 ### Development
 
 1. Start the development server:
+
    ```bash
    npm run dev
    ```

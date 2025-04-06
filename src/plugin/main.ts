@@ -11,7 +11,7 @@ figma.ui.onmessage = (msg: UiCommand) => {
       response = {
         type: 'pong',
         payload: {
-          timestamp: Date.now()
+          timestamp: Date.now(),
         },
       };
       break;
